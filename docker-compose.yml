@@ -1,0 +1,20 @@
+version: '2'
+services:
+    mysql:
+      image: mysql:5.7
+      container_name: Book
+      ports:
+        - 3306:3306
+      environment:
+        - LANG=C.UTF-8
+        - TERM=dumb
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=Book
+        - MYSQL_PASSWORD=password
+        - MYSQL_USER=Book
+      networks:
+        main:
+          aliases:
+            - Book
+networks:
+  main:
