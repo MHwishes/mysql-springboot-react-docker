@@ -1,6 +1,6 @@
-version: '2'
+version: '3'
 services:
-    mysql:
+    db:
       image: mysql:5.7
       container_name: mysql
       ports:
@@ -13,8 +13,19 @@ services:
         - MYSQL_PASSWORD=password
         - MYSQL_USER=Book
       networks:
-        main:
-          aliases:
-            - mysql
+        - spring-boot-mysql-network
+
+    backend:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: backend
+      restart: always
+      ports:
+        - 8080:8080
+      depends_on:
+        - db
+      networks:
+        - spring-boot-mysql-network
 networks:
-  main:
+  spring-boot-mysql-network:
