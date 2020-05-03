@@ -1,15 +1,14 @@
 import React,{ useEffect, useState } from 'react';
 import  axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [books, setBooks] = useState({ books: [] });
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'http://localhost:8080/books/',
+        './books/',
       );
       console.log(result,"result");
 
@@ -22,10 +21,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h2>book list</h2>
+        <div>
+          {books.map((book)=>{
+            return (<li>{book.name}</li>)
+          })}
+        </div>
       </header>
     </div>
   );
