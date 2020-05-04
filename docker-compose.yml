@@ -33,12 +33,13 @@ services:
         context: frontend
         dockerfile: Dockerfile
       ports:
-        - "3000:80"
+        - "80:80"
       restart: always
       depends_on:
         - backend
       networks:
-        - frontend-network
+#        - frontend-network
+        - spring-boot-mysql-network
 
 networks:
   spring-boot-mysql-network:
