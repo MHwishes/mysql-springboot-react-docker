@@ -23,8 +23,7 @@ function App() {
       name: bookName,
       author: author
     })
-      .then(function (response) {
-        console.log(response);
+      .then(()=> {
         setBookName('');
         setAuthor('');
         fetchData();
