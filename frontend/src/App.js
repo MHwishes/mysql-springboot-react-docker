@@ -23,7 +23,7 @@ function App() {
       name: bookName,
       author: author
     })
-      .then(()=> {
+      .then(() => {
         setBookName('');
         setAuthor('');
         fetchData();
@@ -38,23 +38,26 @@ function App() {
       <header className="App-header">
         <div>
           <h2>Add new Book</h2>
-          <div>
-            <label className='label'>Please input book name:</label>
-            <input className='input'
-                   value={bookName}
-                   onChange={(e) => setBookName(e.target.value)}/>
-          </div>
-          <div>
-            <label className='label'>Please inout author:</label>
-            <input className='input'
-                   value={author}
-                   onChange={(e) => setAuthor(e.target.value)}
-            />
+          <div className='input-group'>
+            <div>
+              <label className='label'>Please input book name:</label>
+              <input className='input'
+                     value={bookName}
+                     onChange={(e) => setBookName(e.target.value)}/>
+            </div>
+            <div>
+              <label className='label'>Please inout author:</label>
+              <input className='input'
+                     value={author}
+                     onChange={(e) => setAuthor(e.target.value)}
+              />
+            </div>
           </div>
           <button className='submit' onClick={() => handleSubmit()}> submit</button>
         </div>
+        <div className='split-line'/>
         <h2>book list</h2>
-        <div>
+        <div className='book-list'>
           {books.map((book) => {
             return (<li key={book.id}>{book.name}</li>);
           })}
