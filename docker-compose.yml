@@ -12,6 +12,8 @@ services:
         - MYSQL_DATABASE=BookDatabase
         - MYSQL_PASSWORD=password
         - MYSQL_USER=Book
+      volumes:
+        - my-db-volume:/var/lib/mysql
       networks:
         - spring-boot-mysql-network
 
@@ -41,6 +43,8 @@ services:
         - backend
       networks:
         - frontend-network
+volumes:
+  my-db-volume:
 
 networks:
   spring-boot-mysql-network:
